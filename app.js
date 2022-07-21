@@ -52,30 +52,6 @@ function chooseBendingValue(option,position) {
   }
 }
 
-function selectExtension(shrp, option, compressingOption, position, compressingChooseAmount) {
-  var compressionValue = chooseQuality(compressingOption,position,compressingChooseAmount)
-  switch (option) {
-    case '.webp':
-      shrp.webp({quality:compressionValue})
-      break;
-    case '.jpeg':
-      shrp.jpeg({quality:compressionValue})
-      break;
-    case '.png':
-      shrp.png({quality:compressionValue})
-      break;
-    case '.tiff':
-      shrp.tiff({quality:compressionValue})
-      break;
-    case '.gif':
-      shrp.gif({quality:compressionValue})
-      break;
-    case '.gif':
-      shrp.gif({quality:compressionValue})
-      break;
-  }
-}
-
 function bendingBatchCompression(filePath, extension, amount, operationOption, compressingOption, compressingChooseAmount) {
   var destination = createDestination();
   console.log(operationOption)
@@ -83,7 +59,10 @@ function bendingBatchCompression(filePath, extension, amount, operationOption, c
     var position = Math.round(i/amount*100);
 
     var shrp = sharp("webapp/uploads/"+filePath)
-    selectExtension(shrp, extension,compressingOption,position,compressingChooseAmount);
+
+    shrp.toFormat(extension.substring(1),{quality:chooseQuality(compressingOption,position,compressingChooseAmount)})
+
+    // selectExtension(shrp, extension,compressingOption,position,compressingChooseAmount);
 
     shrp.toFile("webapp/uploads/batches/"+destination+"/"+i+extension, (err, info) => {
       var bendingValue = chooseBendingValue(operationOption,position);

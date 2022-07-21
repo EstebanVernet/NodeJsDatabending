@@ -62,8 +62,6 @@ function bendingBatchCompression(filePath, extension, amount, operationOption, c
 
     shrp.toFormat(extension.substring(1),{quality:chooseQuality(compressingOption,position,compressingChooseAmount)})
 
-    // selectExtension(shrp, extension,compressingOption,position,compressingChooseAmount);
-
     shrp.toFile("webapp/uploads/batches/"+destination+"/"+i+extension, (err, info) => {
       var bendingValue = chooseBendingValue(operationOption,position);
       bendfile("batches/"+destination+"/"+i+extension, "webapp/uploads/batches/"+destination+"/", bendingValue, i);

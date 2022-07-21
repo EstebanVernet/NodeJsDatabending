@@ -3,8 +3,15 @@
   <head>
       <title>Databending using Node.js</title>
       <link rel="stylesheet" href="style.css">
+      <link rel="icon" type="image/x-icon" href="icon.png">
   </head>
   <body>
+
+    <div id="title">
+      <div id="icon"></div>
+      <div id="TextContainer">Bending images<br>using <a id="nodejs" href="https://nodejs.org">Node.js</a></div>
+    <div>
+
     <form id="uploadForm" enctype="multipart/form-data" action="/imgprocess" method="post">
 
       <input type="file" name="myfile" /><br/>
@@ -44,6 +51,8 @@
       <input type="submit" value="Process" name="submit"><br/>
 
     </form>
+
+    <div id="informations"></div>
     <script type="text/javascript" src="script.js"></script>
   </body>
 </html>

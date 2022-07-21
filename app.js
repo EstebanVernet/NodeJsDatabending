@@ -67,6 +67,7 @@ function bendingBatchCompression(filePath, extension, amount, operationOption, c
       bendfile("batches/"+destination+"/"+i+extension, "webapp/uploads/batches/"+destination+"/", bendingValue, i);
     });
   }
+  return destination;
 }
 
 async function bendfile(filePath, destination, pos, id) {
@@ -101,7 +102,7 @@ app.post('/imgprocess', function(req,res){
           return res.send(req.fileValidationError);
       }
       else if (!req.file) {
-          return res.send('Please select an image to upload');
+          return res.redirect('/?status=error&type=nofile');
       }
       else if (err instanceof multer.MulterError) {
           return res.send(err);
@@ -112,9 +113,9 @@ app.post('/imgprocess', function(req,res){
       // req.body.quantity
 
       /*var newName = */ // bendingBatch(req.file.filename, 30);
-      bendingBatchCompression(req.file.filename, req.body.extension, parseInt(req.body.quantity), req.body.bendingoperation, req.body.compressing, parseInt(req.body.compressionAmount))
+      const dest = bendingBatchCompression(req.file.filename, req.body.extension, parseInt(req.body.quantity), req.body.bendingoperation, req.body.compressing, parseInt(req.body.compressionAmount))
       // res.send("Batch successfully corrupted :)")
-      res.redirect('/');
+      res.redirect('/?status=success&destination='+dest);
       /*
       res.send("File is uploaded successfully! <img src='uploads/"+newName+"'>");
       */

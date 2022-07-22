@@ -1,9 +1,15 @@
-# Packages required
+# Install
+**First, install these packages using npm :**
 - body-parser
 - express
 - multer
-- sharp
+- sharp  
 
+**Run this command in the root folder of the project :**
+```
+node app.js
+```
+**Then, go to** `http://localhost:8000` **and you're good to go !**
 # Notes & comments
 
 ### Limitations of image decoders

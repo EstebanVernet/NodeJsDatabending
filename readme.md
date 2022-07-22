@@ -1,14 +1,8 @@
-# Install
-**First, install these packages using npm :**
-- body-parser
-- express
-- multer
-- sharp  
+**This project can't work without Node.js, install it here : https://nodejs.org/**  
 
-**Run this command in the root folder of the project :**
-```
-node app.js
-```
+# Install
+**Run the** `install.bat` **file**  
+**Every time you want to launch the app, run the** `run.bat`  
 **Then, go to** `http://localhost:8000` **and you're good to go !**
 # Notes & comments
 
